@@ -1,5 +1,5 @@
 import React from 'react'
-import Foods from './foods'
+import Foods from './Foods'
 
 function Main() {
   return (
