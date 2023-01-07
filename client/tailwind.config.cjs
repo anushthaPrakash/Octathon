@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./index.html","./src/App.jsx", "./src/**/*.{js,jsx}"],
+  content: ["./index.html", "./src/App.jsx", "./src/**/*.{js,jsx}"],
   mode: "jit",
   theme: {
     extend: {
@@ -23,5 +23,6 @@ module.exports = {
       xl: "1700px",
     },
   },
-  plugins: [require("tailwind-scrollbar-hide")],
+  plugins: [require("tailwind-scrollbar-hide"),
+  require('tailwind-scrollbar'),],
 };

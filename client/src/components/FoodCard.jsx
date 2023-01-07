@@ -2,8 +2,8 @@ import React from 'react'
 
 function FoodCard({ name, src, profile }) {
   return (
-    <div className='relative  h-14 w-14 md:h-20 md:w-20 lg:h-80 lg:w-72 cursor-pointer  transition duration-200
-    transform ease-in hover:scale-105 hover:animate-pulse  justify-center '>
+    <div className='relative  h-auto w-auto md:h-auto md:w-auto lg:h-auto lg:w-auto cursor-pointer  transition duration-200
+    transform ease-in hover:scale-105 hover:animate-pulse  justify-center'>
       {/* overflow-x p-3 relative*/}
       {/* <Image
     className='absolute opacity-0 lg:opacity-100 rounded-full z-50 top-10'
