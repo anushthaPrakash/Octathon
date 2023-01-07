@@ -12,11 +12,14 @@ app.use(cookieSession({
   }))
 app.use(cors());
 
-app.get('/', (req, res) => {
-    res.send("<button><a href='/api/auth'>Login With Google</a></button>")
-});
+// app.use(bodypar)
+
+// app.get('/', (req, res) => {
+//     res.send("<button><a href='/api/auth'>Login With Google</a></button>")
+// });
 
 app.use('/api', LoginRoutes);
+
 
 app.listen(3000 , () => {
     console.log("Server Running on port 3000");
