@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { BsSearch } from "react-icons/bs"
+import {NavLink} from "react-router-dom"
 
 function Header() {
 
@@ -29,10 +30,12 @@ function Header() {
 
     return (
         <div className='sticky top-0 z-50 bg-[#C5F0A4] flex items-center p-2 lg:px-5 shadow-md '>
+        <NavLink  to="/">
             <div className="flex items-center ml-3 " >
                 <img src='./logo.png' className='h-10' />
 
             </div>
+            </NavLink>
             <div className='flex justify-center flex-grow '>
                 <div className='flex space-x-6 md:space-x-2'>
                     <div className="flex 
@@ -48,10 +51,12 @@ function Header() {
 
                 </div>
             </div>
+            <NavLink  to="/user">
             <div className='flex items-center sm:space-x-2 justify-end'>
             <p className='font-semibold pr-3 whitespace-nowrap text-[#3C6255]'>Anushtha Prakash</p>
             <img src='./dpp.png' className='h-10 w-10 rounded-full cursor-pointer' />
             </div>
+            </NavLink>
         </div>
     )
 }

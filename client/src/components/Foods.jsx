@@ -1,5 +1,6 @@
 import React from 'react'
 import FoodCard from './FoodCard';
+import {NavLink} from "react-router-dom"
 const foods = [
     {
         name: "Paneer",
@@ -74,12 +75,14 @@ function Foods() {
         
             <div className='grid  grid-cols-3 md:grid-cols-4 gap-4   '>
                 {foods.map((food) => (
+                    <NavLink  to="/buy">
                     <FoodCard
                         key={food.name}
                         name={food.name}
                         src={food.src}
                         profile={food.profile}
                     />
+                    </NavLink>
                 ))}
             </div>
         

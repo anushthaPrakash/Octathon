@@ -1,6 +1,8 @@
 import React from 'react'
 import DishCard from './DishCard';
 
+
+
 const dishes = [
     {
         name: "Paneer",
@@ -71,18 +73,23 @@ const dishes = [
 
 function BuyDish() {
     return (
-        <div className='flex-row justify-center  gap-4  '>
+        
+        <div className='flex-row justify-center  gap-4 mb-10  '>
+         
             {dishes.map((dish) => (
-
+                
                 <DishCard
                 key={dish.name}
                 name={dish.name}
                 src={dish.src}
                 profile={dish.profile}
                 />
+                
+              
 
 
     ))}
+    
         </div>
     )
 }
