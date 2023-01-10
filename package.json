@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "tailwind-scrollbar": "^2.1.0"
+  },
+  "dependencies": {
+    "firebase": "^9.15.0"
   }
 }

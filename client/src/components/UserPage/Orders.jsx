@@ -1,9 +1,6 @@
 import React from 'react'
-import MealCard from './MealCard';
-
-
-
-const dishes = [
+import OrderCard from './OrderCard';
+const orders = [
     {
         name: "Paneer",
         src: "/1.jpg",
@@ -71,27 +68,27 @@ const dishes = [
     },
 ];
 
-function BuyDish() {
-    return (
 
-        <div className='flex-row justify-center  gap-4 mb-10  '>
+function Orders() {
+  return (
+    <div className='flex-row justify-center  gap-4 mb-10 border-4 '>
 
-            {dishes.map((dish) => (
+    {orders.map((order) => (
 
-                <MealCard
-                    key={dish.name}
-                    name={dish.name}
-                    src={dish.src}
-                    profile={dish.profile}
-                />
-
-
+        <OrderCard
+            key={order.name}
+            name={order.name}
+            src={order.src}
+            profile={order.profile}
+        />
 
 
-            ))}
 
-        </div>
-    )
+
+    ))}
+
+</div>
+  )
 }
 
-export default BuyDish
+export default Orders

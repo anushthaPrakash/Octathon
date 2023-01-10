@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { BsSearch } from "react-icons/bs"
-import {NavLink} from "react-router-dom"
+import { NavLink } from 'react-router-dom';
 
 function Header() {
 
@@ -19,7 +19,7 @@ function Header() {
                     })
                 }
                     
-            ) // Or do whatever you want with the result
+            ) // Or do atever you want with the result
             }, console.log)
             
         }
@@ -30,7 +30,7 @@ function Header() {
 
     return (
         <div className='sticky top-0 z-50 bg-[#C5F0A4] flex items-center p-2 lg:px-5 shadow-md '>
-        <NavLink  to="/">
+        <NavLink to="/">
             <div className="flex items-center ml-3 " >
                 <img src='./logo.png' className='h-10' />
 
@@ -48,13 +48,12 @@ function Header() {
                         <div className='border-l-2 border-[#3C6255]  pl-4 pr-4 '><span className='text-gray-500'>{location ? location : "Enter Your Location"}</span></div>
                     </div>
 
-
                 </div>
             </div>
-            <NavLink  to="/user">
+            <NavLink to="/user">
             <div className='flex items-center sm:space-x-2 justify-end'>
-            <p className='font-semibold pr-3 whitespace-nowrap text-[#3C6255]'>Anushtha Prakash</p>
-            <img src='./dpp.png' className='h-10 w-10 rounded-full cursor-pointer' />
+            <p className='font-semibold pr-3 whitespace-nowrap text-[#3C6255]'>{JSON.parse(localStorage.getItem("user"))?.name}</p>
+            <img src={JSON.parse(localStorage.getItem("user"))?.profilePic} className='h-10 w-10 rounded-full cursor-pointer' />
             </div>
             </NavLink>
         </div>

@@ -1,7 +1,43 @@
 import React from 'react'
+import { useEffect } from 'react';
 import {AiFillGoogleCircle} from 'react-icons/ai';
+// import { signInWithGoogle } from '../../firebase';
+import { db } from '../../firebase';
+import { collection, getDocs } from "firebase/firestore"; 
+import { useUserAuth } from '../contexts/userAuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+
+
+  const navigate = useNavigate();
+  const {googleSignIn} = useUserAuth();
+  const {user} = useUserAuth();
+
+  const handleLogin = async(e)=>{
+    e.preventDefault();
+    try{
+      googleSignIn().then((result)=>{
+        console.log("RESULT IS ", result)
+        const name = result.user.displayName
+        const email = result.user.email
+        const profilePic = result.user.photoURL
+        localStorage.setItem("user", JSON.stringify({name, email, profilePic}));
+        navigate('/');
+      });
+      console.log("USER ", user);
+      // if(!user){
+      // }else{user
+      //   navigate('/');
+      // }
+
+    }catch(err){
+      console.log(err)
+    }
+    // V#6qF?pyM!bQ$%NX
+
+  }
+
   return (
     <section className="h-screen bg-[#FAF8F1]">
         <div className="px-6 h-full text-gray-800">
@@ -20,7 +56,7 @@ const Login = () => {
                       <path fill="currentColor" d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />
                     </svg>
                   </button>
-                  <button type="button" data-mdb-ripple="true" data-mdb-ripple-color="light" className="inline-block p-3 bg-[#54B435] text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-[#82CD47]hover:shadow-lg focus:bg-[#82CD47] focus:shadow-lg focus:outline-none focus:ring-0 active:bg-[#379237]  active:shadow-lg transition duration-150 ease-in-out mx-1">
+                  <button onClick={handleLogin} type="button" data-mdb-ripple="true" data-mdb-ripple-color="light" className="inline-block p-3 bg-[#54B435] text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-[#82CD47]hover:shadow-lg focus:bg-[#82CD47] focus:shadow-lg focus:outline-none focus:ring-0 active:bg-[#379237]  active:shadow-lg transition duration-150 ease-in-out mx-1" href="http://localhost:3000/api/auth">
                     {/* Twitter */}
                     <AiFillGoogleCircle className='w-4 h-4'/>
                   </button>
@@ -30,7 +66,7 @@ const Login = () => {
                 </div>
                 {/* Email input */}
                 <div className="mb-6">
-                  <input type="text" className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-[#82CD47] focus:outline-none" id="exampleFormControlInput2" placeholder="Email address" />
+                  <input type="text" className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-[#82CD47] focus:outline-none" id="exampleFormControlInput3" placeholder="Email address" />
                 </div>
                 {/* Password input */}
                 <div className="mb-6">

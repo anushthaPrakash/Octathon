@@ -3,6 +3,9 @@ import ContactUs from './ContactUs'
 import SideBar from './SideBar'
 import { NavLink } from "react-router-dom"
 import Orders from './OrderCard'
+import OrderCard from './OrderCard'
+import OrderMain from './OrderMain'
+import DishesMain from './YourDishes/DishesMain'
 
 function UserOptions() {
   const [itemToLoad, setItem] = useState(null)
@@ -20,11 +23,17 @@ function UserOptions() {
 
         ?
 
-        (<Orders />)
+        (<OrderMain />)
         :
         null}
-      {/* <ContactUs/> */}
-      {/* <NavLink  to="/contactus"><ContactUs/></NavLink> */}
+      {itemToLoad == 1
+
+        ?
+
+        (<DishesMain />)
+        :
+        null}
+  
 
     </div>
   )

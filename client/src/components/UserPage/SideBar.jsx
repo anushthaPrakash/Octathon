@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import {Link} from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 
-function SideBar({setItem}) {
-    
+function SideBar({ setItem }) {
+
     return (
         <div
             className="h-full  flex flex-row "
@@ -29,13 +29,13 @@ function SideBar({setItem}) {
                             <h2
                                 className="font-medium text-xs md:text-sm text-center text-teal-500"
                             >
-                               Anushtha Prakash
+                                Anushtha Prakash
                             </h2>
                             <p className="text-xs text-gray-500 text-center">User</p>
                         </div>
                     </div>
                     <div id="menu" className="flex flex-col space-y-2">
-                        <Link onClick={()=>{setItem(0)}}
+                        <Link onClick={() => { setItem(0) }}
                             href=""
                             className="text-sm font-medium text-gray-700 py-2 px-2 hover:bg-[#3C6255] hover:text-white hover:text-base rounded-md transition duration-150 ease-in-out"
                         >
@@ -51,7 +51,7 @@ function SideBar({setItem}) {
                             </svg>
                             <span className="">Your Orders</span>
                         </Link>
-                        <Link onClick={()=>{setItem(1)}}
+                        <Link onClick={() => { setItem(1) }}
                             href=""
                             className="text-sm font-medium text-gray-700 py-2 px-2 hover:bg-[#3C6255] hover:text-white hover:scale-105 rounded-md transition duration-150 ease-in-out"
                         >
@@ -67,8 +67,8 @@ function SideBar({setItem}) {
                             </svg>
                             <span className="">Your Dishes</span>
                         </Link>
-                        
-                        <Link onClick={()=>{setItem(2)}}
+
+                        <Link onClick={() => { setItem(2) }}
                             href=""
                             className="text-sm font-medium text-gray-700 py-2 px-2 hover:bg-[#3C6255] hover:text-white hover:scale-105 rounded-md transition duration-150 ease-in-out"
                         >
@@ -87,8 +87,8 @@ function SideBar({setItem}) {
                             </svg>
                             <span className="">Contact Us</span>
                         </Link>
-                        
-                        <Link onClick={()=>{setItem(3)}}
+
+                        <Link onClick={() => { setItem(3) }}
                             href=""
                             className="text-sm font-medium text-gray-700 py-2 px-2 hover:bg-[#3C6255] hover:text-white hover:scale-105 rounded-md transition duration-150 ease-in-out"
                         >
@@ -106,6 +106,14 @@ function SideBar({setItem}) {
                                 ></path>
                             </svg>
                             <span className="">Log Out</span>
+                        </Link>
+                        <Link to="/" class="flex items-center space-x-2 bg-[#3C6255] hover:bg-[#1b5d45] text-gray-100 px-4 py-2 rounded transition duration-150" title="Return Home">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd"></path>
+                            </svg>
+                            <NavLink to="/">
+                                <span>Back</span>
+                            </NavLink>
                         </Link>
 
                     </div>

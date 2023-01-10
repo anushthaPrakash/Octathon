@@ -19,7 +19,7 @@ function FoodCard({ name, src, profile }) {
     layout="fill"
     /> */}
       <img src={profile} className='h-10 absolute opacity-0 lg:opacity-100 rounded-full z-50 top-10 ml-3' />
-      <img src={src} className='h-80 object-cover filter brightness-75 rounded-3xl  md:rounded-full lg:rounded-3xl'/>
+      <img src={src}  loading="lazy"  className='h-80 object-cover filter brightness-75 rounded-3xl  md:rounded-full lg:rounded-3xl'/>
 
       <p className=' ml-2 absolute opacity-0 lg:opacity-100 bottom-4 w-5/6 text-white text-sm font-bold truncate'>
         {name}

@@ -1,17 +1,17 @@
 import React from 'react'
-import Orders from './Orders'
+import Dishes from './Dishes'
 
-function OrderMain() {
+function DishesMain() {
   return (
     <div className='flex-grow  '>
     <div className='h-screen mb-8  bg-[#FAF8F1] mx-auto  scrollbar-track-gray-400/20 scrollbar-thumb-[#3C6255] scrollbar-thin w-max justify-center '>
    
     
-   <Orders/>
+   <Dishes/>
   
    </div>
    </div>
   )
 }
 
-export default OrderMain
+export default DishesMain
