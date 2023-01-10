@@ -46,7 +46,7 @@ function MealCard({ name, src, profile }) {
 
         // </div>
         <div class="p-4  items-center justify-center  rounded-xl group sm:flex space-x-6 bg-white bg-opacity-50 shadow-xl hover:rounded-2xl">
-        <img  class="mx-auto w-full block  h-40 rounded-lg"  alt="art cover" loading="lazy" src={src} />
+        <img  class="mx-auto w-max block  h-40 rounded-lg"  alt="art cover" loading="lazy" src={src} />
         <div class="sm:w-8/12 pl-0 p-5">
             <div class="space-y-2">
                 <div class="space-y-4">
@@ -57,7 +57,7 @@ function MealCard({ name, src, profile }) {
                 <div class="flex items-center space-x-4 justify-between">
                     <div class="flex gap-3 space-y-1">
                         <img  src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"  class="rounded-full h-8 w-8" />
-                        <span class="text-sm ">email of buyer </span>
+                        <span class="text-sm ">email of seller </span>
                     </div>
                 </div>
                 <div class="flex items-center space-x-4 lg:space-x-32 justify-between">
@@ -65,6 +65,13 @@ function MealCard({ name, src, profile }) {
                         <svg stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         <p class="text-xs ">date of selling</p>
                     </div>
+                    <NavLink  to="/buydish">
+                        <button class="group relative w-24  xs:w-32  ss:w-32 sm:w-42  h-auto md:w-48 overflow-hidden rounded-lg bg-white text-lg shadow ">
+                            <div class="absolute inset-0 w-3 bg-[#C5F0A4]  transition-all duration-[250ms] ease-out group-hover:w-full"></div>
+                            <span class="relative text-black group-hover:text-white group-hover:font-bold">Buy</span>
+                        </button>
+                        </NavLink>
+                    
                     <div class="flex flex-row space-x-1  ">
                         <div
                             class="bg-red-500 shadow-lg shadow- shadow-red-600 text-white cursor-pointer px-3 py-1 text-center justify-center items-center rounded-xl flex space-x-2 flex-row">
