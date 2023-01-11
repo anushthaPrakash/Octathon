@@ -4,7 +4,7 @@ import {storage, db} from '../../firebase'
 import { uuid4 } from 'uuid4';
 import { useState } from 'react'
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc, collection , serverTimestamp} from 'firebase/firestore';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -62,7 +62,8 @@ function SellDish() {
           price:price,
           sEmail:JSON.parse(localStorage.getItem("user")).email,
           sName:JSON.parse(localStorage.getItem('user')).name,
-          sPhoto:JSON.parse(localStorage.getItem('user')).profilePic
+          sPhoto:JSON.parse(localStorage.getItem('user')).profilePic ,
+          createdAt: serverTimestamp()  
         })
         console.log(URL)  
         navigate('/success/Item-Added-Successfully')
@@ -141,7 +142,7 @@ function SellDish() {
 
             <div className="mb-5">
               <label className="mb-3 block text-base font-medium text-[#07074D]">
-                Upload a photo maybe?
+                Upload a photo :
               </label>
               <input type="file" accept="image/*" required name="photo" id="photo" onChange={setMyPhoto}/>
             </div>
