@@ -1,7 +1,19 @@
 import React, { useState } from 'react'
-import { Link, NavLink } from "react-router-dom"
+import { Link, NavLink, useNavigate } from "react-router-dom"
+import { useUserAuth } from '../contexts/userAuthContext'
 
 function SideBar({ setItem }) {
+
+    const navigate = useNavigate();
+    const {googleLogOut} = useUserAuth();
+
+    const handleSignout = ()=>{
+        googleLogOut().then(()=>{
+            navigate('/login');
+        }).catch((e)=>{
+            console.log(e)
+        })
+    }
 
     return (
         <div
@@ -88,7 +100,7 @@ function SideBar({ setItem }) {
                             <span className="">Contact Us</span>
                         </Link>
 
-                        <Link onClick={() => { setItem(3) }}
+                        <div onClick={handleSignout}
                             href=""
                             className="text-sm font-medium text-gray-700 py-2 px-2 hover:bg-[#3C6255] hover:text-white hover:scale-105 rounded-md transition duration-150 ease-in-out"
                         >
@@ -106,14 +118,14 @@ function SideBar({ setItem }) {
                                 ></path>
                             </svg>
                             <span className="">Log Out</span>
-                        </Link>
+                        </div>
                         <Link to="/" class="flex items-center space-x-2 bg-[#3C6255] hover:bg-[#1b5d45] text-gray-100 px-4 py-2 rounded transition duration-150" title="Return Home">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                 <path fill-rule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd"></path>
                             </svg>
-                            <NavLink to="/">
+                            {/* <NavLink to="/"> */}
                                 <span>Back</span>
-                            </NavLink>
+                            {/* </NavLink> */}
                         </Link>
 
                     </div>
