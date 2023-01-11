@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link, NavLink } from "react-router-dom"
+// user image not loading
 
 function SideBar({ setItem }) {
 
@@ -21,7 +22,7 @@ function SideBar({ setItem }) {
                     </h1>
                     <div id="profile" className="space-y-3">
                         <img
-                            src="/dpp.png"
+                            src={JSON.parse(localStorage.getItem("user"))?.profilePic}
                             alt="Avatar user"
                             className="w-10 md:w-16 rounded-full mx-auto"
                         />
@@ -29,7 +30,7 @@ function SideBar({ setItem }) {
                             <h2
                                 className="font-medium text-xs md:text-sm text-center text-teal-500"
                             >
-                                Anushtha Prakash
+                               {JSON.parse(localStorage.getItem("user"))?.name}
                             </h2>
                             <p className="text-xs text-gray-500 text-center">User</p>
                         </div>

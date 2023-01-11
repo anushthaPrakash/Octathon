@@ -70,14 +70,17 @@ const foods = [
 ];
 
 function Foods() {
+//    let i=1;
+//    console.log(i)
     return (
 
         
             <div className='grid  grid-cols-3 md:grid-cols-4 gap-4   '>
-                {foods.map((food) => (
+                {foods.map((food,i) => (
                     <NavLink  to="/buy">
+                   
                     <FoodCard
-                        key={food.name}
+                        key={i}
                         name={food.name}
                         src={food.src}
                         profile={food.profile}
