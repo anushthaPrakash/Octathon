@@ -1,77 +1,40 @@
 import React from 'react'
 import FoodCard from './FoodCard';
 import {NavLink} from "react-router-dom"
-const foods = [
-    {
-        name: "Paneer",
-        src: "/1.jpg",
-        profile: "/dpp.png",
-    },
-    {
-        name: "Chicken",
-        src: "/2.jpg",
-        profile: "/dpp.png",
-
-    },
-    {
-        name: "Bhindi",
-        src: "/3.jpg",
-        profile: "/dpp.png",
-
-    },
-    {
-        name: "Ghobhi",
-        src: "/4.jpg",
-        profile: "/dpp.png",
-
-    },
-    {
-        name: "Kadhi",
-        src: "/5.jpg",
-        profile: "/dpp.png",
-
-    },
-    {
-        name: "Bhujia",
-        src: "/6.jpg",
-        profile: "/dpp.png",
-
-    },
-    {
-        name: "Egg Curry",
-        src: "/7.jpg",
-        profile: "/dpp.png",
-
-    },
-    {
-        name: "Mushroom",
-        src: "/8.jpg",
-        profile: "/dpp.png",
-
-    },
-    {
-        name: "Fish",
-        src: "/9.jpg",
-        profile: "/dpp.png",
-
-    },
-    {
-        name: "Raita",
-        src: "/10.jpg",
-        profile: "/dpp.png",
-
-    },
-    {
-        name: "Biryani",
-        src: "/1.jpg",
-        profile: "/dpp.png",
-
-    },
-];
+import { useState } from 'react';
+import { useEffect } from 'react';
+import {getDocs} from 'firebase/firestore'
+import { collection } from 'firebase/firestore';
+import { db } from '../firebase';
 
 function Foods() {
-//    let i=1;
-//    console.log(i)
+    const [foods, setFoods] = useState([]);
+        
+    const getData = async()=>{
+        await getDocs(collection(db, 'items')).then((response)=>{
+            let data = response.docs.map((ele)=>(
+                {...ele.data()} 
+            ))
+            const foodSet = new Set(); // that stores the item obj
+            const foodNameSet = new Set(); // that stores the item name
+
+            data.forEach(element => {
+                if(!foodNameSet.has(element['item-name']) && element['item-name']!==""){
+                    foodNameSet.add(element['item-name']);
+                    foodSet.add(element)
+                }
+            });
+
+            setFoods([...foodSet]);
+
+        })
+    }
+
+    useEffect(() => {
+
+        getData();
+
+    }, [])
     return (
 
         
@@ -81,9 +44,8 @@ function Foods() {
                    
                     <FoodCard
                         key={i}
-                        name={food.name}
-                        src={food.src}
-                        profile={food.profile}
+                        name={food['item-name']}
+                        src={food.photo}
                     />
                     </NavLink>
                 ))}

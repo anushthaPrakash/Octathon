@@ -1,8 +1,6 @@
 import React from 'react'
 import MealCard from './MealCard';
 
-
-
 const dishes = [
     {
         name: "Paneer",
@@ -71,7 +69,10 @@ const dishes = [
     },
 ];
 
+
+
 function BuyDish() {
+
     return (
 
         <div className='flex-row justify-center  gap-4 mb-10  '>
