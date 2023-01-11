@@ -36,6 +36,8 @@ const signInWithGoogle = ()=>{
     }).catch((err)=>{
         console.log(err);
     })
+
+    
 }
 
 const db = getFirestore(app);

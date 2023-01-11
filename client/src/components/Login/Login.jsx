@@ -26,15 +26,10 @@ const Login = () => {
         navigate('/');
       });
       console.log("USER ", user);
-      // if(!user){
-      // }else{user
-      //   navigate('/');
-      // }
 
     }catch(err){
       console.log(err)
     }
-    // V#6qF?pyM!bQ$%NX
 
   }
 
