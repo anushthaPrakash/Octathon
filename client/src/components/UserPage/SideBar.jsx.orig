@@ -1,7 +1,12 @@
 import React, { useState } from 'react'
+<<<<<<< HEAD
+import { Link, NavLink } from "react-router-dom"
+// user image not loading
+=======
 import { Link, NavLink, useNavigate } from "react-router-dom"
 import {getDocs} from 'firebase/firestore';
 import { useUserAuth } from '../contexts/userAuthContext';
+>>>>>>> 80d67d58364f5aa961d918b0fefb294333df7c4f
 
 function SideBar({ setItem }) {
     
