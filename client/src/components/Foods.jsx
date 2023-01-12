@@ -1,6 +1,6 @@
 import React from 'react'
 import FoodCard from './FoodCard';
-import {NavLink} from "react-router-dom"
+import {NavLink,useParams} from "react-router-dom"
 import { useState } from 'react';
 import { useEffect } from 'react';
 import {getDocs} from 'firebase/firestore'
@@ -15,14 +15,15 @@ function Foods() {
             let data = response.docs.map((ele)=>(
                 {...ele.data()} 
             ))
-            const foodSet = new Set(); // that stores the item obj
-            const foodNameSet = new Set(); // that stores the item name
+            const foodSet = new Set(); // that stores the item obj..all the different foods available 
+            const foodNameSet = new Set(); // that stores the item name ..all the entries of a particular food
 
             data.forEach(element => {
                 if(!foodNameSet.has(element['item-name']) && element['item-name']!==""){
                     foodNameSet.add(element['item-name']);
                     foodSet.add(element)
                 }
+                // what about a item second panner added is should not go in foodset but should go in foodnameset of panner right?
             });
 
             setFoods([...foodSet]);
@@ -40,7 +41,7 @@ function Foods() {
         
             <div className='grid  grid-cols-3 md:grid-cols-4 gap-4   '>
                 {foods.map((food,i) => (
-                    <NavLink  to="/buy">
+                    <NavLink  to={{pathname: "/buy/"+ food['item-name']}}>
                    
                     <FoodCard
                         key={i}
@@ -48,6 +49,7 @@ function Foods() {
                         src={food.photo}
                     />
                     </NavLink>
+                    
                 ))}
             </div>
         
