@@ -29,10 +29,10 @@ function App() {
           />
           <Route path="/login" element={<Login />} />
           <Route
-            path="/buy"
+          path="/buy/:dish"
             element={
               <Protected>
-                <BuyItem />
+                <BuyItem  />
               </Protected>
             }
           />

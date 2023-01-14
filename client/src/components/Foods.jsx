@@ -4,12 +4,36 @@ import {NavLink} from "react-router-dom"
 import { useState } from 'react';
 import { useEffect } from 'react';
 import {getDocs, orderBy} from 'firebase/firestore'
+import {getDocs, orderBy} from 'firebase/firestore'
 import { collection } from 'firebase/firestore';
 import { db } from '../firebase';
 
 function Foods() {
     const [foods, setFoods] = useState([]);
         
+    
+
+    useEffect(() => {
+        const getData = async()=>{
+            await getDocs(collection(db, 'items'), orderBy('createdAt','desc')).then((response)=>{
+                let data = response.docs.map((ele)=>(
+                    {...ele.data()} 
+                ))
+                const foodSet = new Set(); // that stores the item obj
+                const foodNameSet = new Set(); // that stores the item name
+    
+                data.forEach(element => {
+                    if(!foodNameSet.has(element['item-name']) && element['item-name']!==""){
+                        foodNameSet.add(element['item-name']);
+                        foodSet.add(element)
+                    }
+                });
+    
+                setFoods([...foodSet]);
+                console.log(foods)
+    
+            })
+        }
     
 
     useEffect(() => {
