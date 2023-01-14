@@ -13,6 +13,7 @@ function UserOptions() {
   return (
     <div className='flex-row flex'>
       <SideBar setItem={setItem} />
+
       {itemToLoad == 2
 
         ?
@@ -20,6 +21,7 @@ function UserOptions() {
         (<ContactUs />)
         :
         null}
+      
       {itemToLoad == 0
 
         ?
@@ -27,6 +29,7 @@ function UserOptions() {
         (<OrderMain />)
         :
         null}
+      
       {itemToLoad == 1
 
         ?
@@ -34,7 +37,6 @@ function UserOptions() {
         (<DishesMain />)
         :
         null}
-  
 
     </div>
   )
