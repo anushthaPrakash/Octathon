@@ -1,20 +1,21 @@
 import React from 'react'
 
-function DishCard({ name, src, profile, date, likes, dislikes }) {
+function DishCard({ name, src, profile, date, likes, dislikes, price }) {
     return (
         <div class="p-4   items-center justify-center  rounded-xl group sm:flex space-x-6 bg-white bg-opacity-50 shadow-xl hover:rounded-2xl">
             <img class="mx-auto w-full block  h-40 rounded-lg" alt="art cover" loading="lazy" src={src} />
             <div class="sm:w-8/12 pl-0 p-5">
                 <div class="space-y-2">
-                    <div class="space-y-4">
+                    <div class=" flex flex-row space-x-1 justify-between">
                         <h4 class="text-md font-semibold text-cyan-900 text-justify">
                             {name}
                         </h4>
+                        <p className='text-gray-400'> ₹{price}</p>
                     </div>
                     <div class="flex items-center space-x-4 lg:space-x-32 justify-between">
                         <div class="text-grey-500 flex flex-row space-x-1  my-4">
                             <svg stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            <p class="text-xs ">{date}</p>
+                            <p class="text-xs  ">{date}</p>
                         </div>
                         <div class="flex flex-row space-x-1  ">
                             <div

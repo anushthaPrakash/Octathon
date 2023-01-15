@@ -1,36 +1,66 @@
-import { collection, addDoc,getDoc, setDoc } from 'firebase/firestore';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom';
-import { db ,storage} from '../../firebase';
+import { db, storage } from '../../firebase';
+import { useNavigate } from 'react-router-dom';
 
 function BuyDishSelected(props) {
   const { state } = useLocation();
-  const { name, sEmail, price } = state;
-  const [priceT,setPriceT] = useState(state.price.price)
+  const { name, sEmail, price, SName,photo} = state;
+  const [priceT, setPriceT] = useState(state.price.price)
+  const [card, setcard] = useState("");
+  const [ed, seted] = useState("");
+  const [cvv, setcvv] = useState("");
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
+  // console.log(card);
 
-  // console.log(state)
+  console.log(state)
   // console.log(price)
   const saveItem = async (e) => {
-       e.preventDefault();
-       const colRef =collection(db,"items")
-       let docRef = doc(db, 'items', 
-       "43N9kwwV18Wmqu5l8K7l")
-       updateDoc(docRef, {
-        bEmail: JSON.parse(localStorage.getItem("user"))?.email
-      })
+    e.preventDefault();
+    if (card === null || card === "" || card === undefined) {
+      setError("Card number required");
+      return;
+    }
+     if(ed === null || ed === "" || ed === undefined){
+      setError("Expiry Date required");
+      return;
+    }
+    if (cvv === null || cvv === "" || cvv === undefined){
+      setError("CVC/CVV required");
+      return;
+    }
+
+    setError(null);
+    await addDoc(collection(db, "buyersandsellers"), {
+      ['item-name']:name,
+      BEmail:JSON.parse(localStorage.getItem('user')).email,
+      BName:JSON.parse(localStorage.getItem('user')).name,
+      Price: priceT,
+      SEmail:sEmail,
+      SName:SName,
+      photo:photo,
+      bPhoto:JSON.parse(localStorage.getItem('user')).profilePic ,
+      createdAt: serverTimestamp()  
+    })
+    navigate('/success/Purchase-Successfull')
   }
   const discountP = state.price.price - 0.05 * state.price.price;
-  function setN(){
+  function setN() {
     setPriceT(state.price.price)
   }
-  function setD(event){
-    setPriceT( discountP)
+  function setD(event) {
+    setPriceT(discountP)
   }
   return (
     <div className="flex items-center justify-center w-screen min-h-screen bg-gray-100 text-gray-800 p-8">
       <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8 w-full max-w-screen-lg">
         <div className="lg:col-span-2">
           <h2 className="text-sm font-medium">Payment Method</h2>
+          {
+            error ? <label className='text-sm text-red-500 border-2 rounded text-center my-8' htmlFor="error">{error}</label> : null
+          }
           <div className="bg-white rounded mt-4 shadow-lg">
 
             <div className="border-t">
@@ -38,24 +68,25 @@ function BuyDishSelected(props) {
                 <input className="appearance-none w-4 h-4 rounded-full border-2 border-white ring-2 ring-blue-600 ring-opacity-100 bg-blue-600" type="radio" />
                 <label className="text-sm font-medium ml-4">Credit Card</label>
               </div>
+
               <div className="grid grid-cols-2 gap-4 px-8 pb-8">
                 <div className="col-span-2">
                   <label className="text-xs font-semibold" htmlFor="cardNumber">Card number</label>
-                  <input className="flex items-center h-10 border mt-1 rounded px-4 w-full text-sm" type="text" placeholder="0000 0000 0000 0000" />
+                  <input className="flex items-center h-10 border mt-1 rounded px-4 w-full text-sm" required type="string" placeholder="0000 0000 0000 0000" name="cardNumber" id="cardNumber" onChange={(e) => { setcard(e.target.value) }} />
                 </div>
                 <div className>
                   <label className="text-xs font-semibold" htmlFor="cardNumber">Expiry Date</label>
-                  <input className="flex items-center h-10 border mt-1 rounded px-4 w-full text-sm" type="text" placeholder="MM/YY" />
+                  <input className="flex items-center h-10 border mt-1 rounded px-4 w-full text-sm" type="text" placeholder="MM/YY" onChange={(e) => { seted(e.target.value) }}/>
                 </div>
                 <div className>
                   <label className="text-xs font-semibold" htmlFor="cardNumber">CVC/CVV</label>
-                  <input className="flex items-center h-10 border mt-1 rounded px-4 w-full text-sm" type="password" placeholder="..." />
+                  <input className="flex items-center h-10 border mt-1 rounded px-4 w-full text-sm" type="password" placeholder="..." onChange={(e) => { setcvv(e.target.value) }} />
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <form onSubmit={saveItem}  name="id">
+        <form onSubmit={saveItem} name="id">
           <div>
             <h2 className="text-sm font-medium">Purchase Summary</h2>
             <div className="bg-white rounded mt-4 shadow-lg py-6">
@@ -69,14 +100,13 @@ function BuyDishSelected(props) {
               </div>
               <div className="px-8 mt-3">
                 <div className="flex items-end">
-                  <select className="text-sm font-medium focus:outline-none -ml-1" name id onChange={(event)=>
-                  { 
-                     event?setD():setN()
-                    }} >
+                  <select className="text-sm font-medium focus:outline-none -ml-1" name id onChange={(event) => {
+                    event ? setD() : setN()
+                  }} >
                     <option >Dish's Price (Regular)</option>
                     <option >Dish's Price (Discounted)</option>
                   </select>
-                <span className="text-sm ml-auto font-semibold">{priceT}</span>
+                  <span className="text-sm ml-auto font-semibold">{priceT}</span>
                   <span className="text-xs text-gray-500 mb-px">/person</span>
                 </div>
                 <span className="text-xs text-gray-500 mt-2">Save 5% with membership</span>

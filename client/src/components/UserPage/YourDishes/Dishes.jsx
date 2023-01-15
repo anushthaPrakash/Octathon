@@ -113,7 +113,8 @@ function Dishes() {
             profile={dish.profile}
             date={dish.createdAt.toDate().toLocaleDateString('en-IN')}
             likes={dish.likes}
-            dislikes={dish.likes}
+            dislikes={dish.dislikes}
+            price ={dish.price}
         />
 
     ))}

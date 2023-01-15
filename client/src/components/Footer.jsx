@@ -6,7 +6,8 @@ import {NavLink} from "react-router-dom"
 
 function Footer() {
   return (
-
+    <footer>
+      
     <div className='fixed  z-50 bg-[#C5F0A4] flex items-center p-2 lg:px-5 shadow-lg justify-center inset-x-0 bottom-0 mx-auto'>
       <div className='flex justify-center flex-grow  '>
         <IconContext.Provider value={{ color: "#3C6255", className: "global-class-name", size: '28px' }}>
@@ -27,6 +28,7 @@ function Footer() {
 
 
     </div>
+    </footer>
 
   )
 }
