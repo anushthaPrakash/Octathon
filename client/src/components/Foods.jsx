@@ -41,7 +41,7 @@ function Foods() {
         
             <div className='grid  grid-cols-3 md:grid-cols-4 gap-4   '>
                 {foods.map((food,i) => (
-                    <NavLink  to="/buy">
+                    <NavLink to={{pathname: "/buy/"+ food['item-name']}}>
                    
                     <FoodCard
                         key={i}
