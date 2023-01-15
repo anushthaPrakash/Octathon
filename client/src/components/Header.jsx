@@ -16,7 +16,6 @@ function Header() {
                 fetch(`https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=ac79a44feb304719b7ac2e6437ce6cbc`)
                     .then((response)=>{
                     response.json().then((data)=>{
-                        // console.log(data.results[0].formatted)
                         setLocation(data.results[0].formatted)
                     })
                 }
@@ -34,7 +33,7 @@ function Header() {
         <div className='sticky top-0 z-50 bg-[#C5F0A4] flex items-center p-2 lg:px-5 shadow-md '>
         <NavLink to="/">
             <div className="flex items-center ml-3 " >
-                <img src='./logo.png' className='h-10' />
+                <img src='../logo.png' className='h-10' />
 
             </div>
             </NavLink>
