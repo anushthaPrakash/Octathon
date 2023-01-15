@@ -4,7 +4,6 @@ import {NavLink} from "react-router-dom"
 import { useState } from 'react';
 import { useEffect } from 'react';
 import {getDocs, orderBy} from 'firebase/firestore'
-import {getDocs, orderBy} from 'firebase/firestore'
 import { collection } from 'firebase/firestore';
 import { db } from '../firebase';
 
@@ -42,7 +41,7 @@ function Foods() {
         
             <div className='grid  grid-cols-3 md:grid-cols-4 gap-4   '>
                 {foods.map((food,i) => (
-                    <NavLink  to="/buy">
+                    <NavLink to={{pathname: "/buy/"+ food['item-name']}}>
                    
                     <FoodCard
                         key={i}
