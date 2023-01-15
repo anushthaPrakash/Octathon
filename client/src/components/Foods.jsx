@@ -4,7 +4,6 @@ import {NavLink} from "react-router-dom"
 import { useState } from 'react';
 import { useEffect } from 'react';
 import {getDocs, orderBy} from 'firebase/firestore'
-import {getDocs, orderBy} from 'firebase/firestore'
 import { collection } from 'firebase/firestore';
 import { db } from '../firebase';
 
