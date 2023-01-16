@@ -89,7 +89,7 @@ function SellDish() {
 
 
   return (
-    <div className="flex items-center justify-center p-12 my-auto h-screen border-4 border-orange-300">
+    <div className="flex items-center justify-center p-12 my-auto h-screen">
         <div className="mx-auto w-full md:w-1/2 lg:w-1/2">
           
           {
@@ -105,7 +105,7 @@ function SellDish() {
                   <label htmlFor="fName" className="mb-3 block text-base font-medium text-[#07074D]">
                     Dish Name
                   </label>
-                  <input type="text" name="item-name" id="item-name" placeholder="First Name" className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" onChange={setValue} />
+                  <input type="text" name="item-name" id="item-name" placeholder="First Name" className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#3C6255] focus:shadow-md" onChange={setValue} />
                 </div>) 
                 :
                 (<div>
@@ -123,7 +123,7 @@ function SellDish() {
                 </div>)
                 }
                 <div className='flex flex-row items-center justify-start p-4' >
-                  <label htmlFor="item" className="block text-base font-medium text-red-400 mr-2">
+                  <label htmlFor="item" className="block font-medium text-[#54B435] mr-2">
                     Not in the options? Check this to write your own!
                   </label>
                   <input type="checkbox" name="yourown" id="yourown" onChange={detectYourOwn} />
@@ -137,7 +137,7 @@ function SellDish() {
               <label htmlFor="guest" className="mb-3 block text-base font-medium text-[#07074D]">
                 Price You're Selling at
               </label>
-              <input required type="number" name="Price" id="Price" placeholder={5} min={0} className="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" onChange={setValue} />
+              <input required type="number" name="Price" id="Price" placeholder={5} min={0} className="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#54B435] focus:shadow-md" onChange={setValue} />
             </div>
 
             <div className="mb-5">
@@ -148,7 +148,7 @@ function SellDish() {
             </div>
 
             <div>
-              <button className="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
+              <button className="hover:shadow-form rounded-md bg-[#54B435] py-3 px-8 text-center text-base font-semibold text-white outline-none">
                 Submit
               </button>
             </div>

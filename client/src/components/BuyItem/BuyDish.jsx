@@ -43,7 +43,7 @@ function BuyDish() {
                     name={dish['item-name']}
                     src={dish.photo}
                     email={dish['sEmail']}
-                    dateSelling={dish.createdAt.toDate().toLocaleDateString('en-IN')}
+                    dateSelling={dish.createdAt.toDate().toLocaleString('en-IN')}
                     price={dish["price"]}
                     SName={dish['sName']}
                     Likes={dish['likes']}
