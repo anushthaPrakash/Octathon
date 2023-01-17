@@ -64,12 +64,3 @@ function App() {
 }
 
 export default App;
-
-        // /* <Route path="/login" element={<Login/>}/>
-        // <Route path="/buy"  element={<BuyItem/>}/>
-        // <Route path="/user"  element={<UserOptions/>}/>
-        // <Route path="/sell"  element={<SellDish/>}/>
-        // <Route path="/sell/:item" element={<Login/>}/>
-        // <Route path="/buydish" element={<BuyDishSelected/>}/>
-        // <Route path="/contactus" element={<ContactUs/>}/>
-        // <Route path="/success/:message" element={<Sucess/>}/>

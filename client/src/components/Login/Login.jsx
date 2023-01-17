@@ -18,14 +18,12 @@ const Login = () => {
     e.preventDefault();
     try{
       googleSignIn().then((result)=>{
-        console.log("RESULT IS ", result)
         const name = result.user.displayName
         const email = result.user.email
         const profilePic = result.user.photoURL
         localStorage.setItem("user", JSON.stringify({name, email, profilePic}));
         navigate('/');
       });
-      console.log("USER ", user);
 
     }catch(err){
       console.log(err)

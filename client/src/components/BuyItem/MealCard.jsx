@@ -4,9 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom"
 import BuyDishSelected from '../BuyPage/BuyDishSelected'
 
 
-function MealCard({ key,name, src, email, dateSelling, price, SName, Likes, DisLikes,sPhoto,photo }) {
-    // console.log(src)
-    // console.log(key);
+function MealCard({ name, src, email, dateSelling, price, SName, Likes, DisLikes,sPhoto,photo, id }) {
     const navigate = useNavigate();
 
     return (
@@ -36,7 +34,7 @@ function MealCard({ key,name, src, email, dateSelling, price, SName, Likes, DisL
                         </div>
 
                         {/* <NavLink to="/buydish"> */}
-                            <button  onClick={()=>{ navigate('/buydish', { state: { name: {name}, sEmail: {email} , price: {price}, SName:{SName} ,photo:{photo}}});}} class="group relative w-24  xs:w-32  ss:w-32 sm:w-42  h-auto md:w-48 overflow-hidden rounded-lg bg-white text-lg shadow ">
+                            <button  onClick={()=>{ navigate('/buydish', { state: { name: name,itemId: id, sEmail: email , price: price, SName:SName ,photo:photo}});}} class="group relative w-24  xs:w-32  ss:w-32 sm:w-42  h-auto md:w-48 overflow-hidden rounded-lg bg-white text-lg shadow ">
                                 <div class="absolute inset-0 w-3 bg-[#C5F0A4]  transition-all duration-[250ms] ease-out group-hover:w-full"></div>
                                 <span class="relative text-black group-hover:text-white group-hover:font-bold">Buy</span>
                             </button>
