@@ -13,7 +13,7 @@ function BuyDish() {
     const getData  = async()=>{
     await getDocs(collection(db,'items')).then((response)=>{
         let data = response.docs.map((ele)=>(
-            {...ele.data()} 
+            {...ele.data(), id:ele.id} 
             ))
             const foodNameSet = new Set();
             data.forEach(element => {
@@ -23,6 +23,7 @@ function BuyDish() {
                 // what about a item second panner added is should not go in foodset but should go in foodnameset of panner right?
             });
             setDishes([...foodNameSet]);
+            console.log(foodNameSet)
     })
     }
     // console.log(dish)
@@ -50,6 +51,7 @@ function BuyDish() {
                     DisLikes={dish['dislikes']}
                     sPhoto ={dish.sPhoto}
                     photo={dish.photo}
+                    id={dish.id}
                 />
 
 

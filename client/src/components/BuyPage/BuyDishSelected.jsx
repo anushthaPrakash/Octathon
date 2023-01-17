@@ -1,22 +1,22 @@
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom';
-import { db, storage } from '../../firebase';
+import { db } from '../../firebase';
 import { useNavigate } from 'react-router-dom';
 
 function BuyDishSelected(props) {
   const { state } = useLocation();
-  const { name, sEmail, price, SName,photo} = state;
-  const [priceT, setPriceT] = useState(state.price.price)
+  const { name, sEmail, price, SName,photo, itemId} = state;
+  console.log(state)
+  const [priceT, setPriceT] = useState(state.price)
   const [card, setcard] = useState("");
   const [ed, seted] = useState("");
   const [cvv, setcvv] = useState("");
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  // console.log(card);
 
   console.log(state)
-  // console.log(price)
+
   const saveItem = async (e) => {
     e.preventDefault();
     if (card === null || card === "" || card === undefined) {
@@ -31,8 +31,13 @@ function BuyDishSelected(props) {
       setError("CVC/CVV required");
       return;
     }
+    if(priceT===null || priceT===0 || priceT===undefined){
+      setError("price is wrong");
+      return;
+    }
 
     setError(null);
+    console.log(itemId)
     await addDoc(collection(db, "buyersandsellers"), {
       ['item-name']:name,
       BEmail:JSON.parse(localStorage.getItem('user')).email,
@@ -41,14 +46,16 @@ function BuyDishSelected(props) {
       SEmail:sEmail,
       SName:SName,
       photo:photo,
-      bPhoto:JSON.parse(localStorage.getItem('user')).profilePic ,
+      bPhoto:JSON.parse(localStorage.getItem('user')).profilePic,
+      itemId: itemId,
       createdAt: serverTimestamp()  
     })
+    console.log(itemId)
     navigate('/success/Purchase-Successfull')
   }
-  const discountP = state.price.price - 0.05 * state.price.price;
+  const discountP = state.price - 0.05 * state.price;
   function setN() {
-    setPriceT(state.price.price)
+    setPriceT(state.price)
   }
   function setD(event) {
     setPriceT(discountP)

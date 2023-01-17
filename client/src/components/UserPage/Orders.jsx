@@ -3,74 +3,6 @@ import React, { useState } from 'react'
 import { useEffect } from 'react';
 import OrderCard from './OrderCard';
 import { db } from '../../firebase';
-// const orders = [
-//     {
-//         name: "Paneer",
-//         src: "/1.jpg",
-//         profile: "/dpp.png",
-//     },
-//     {
-//         name: "Chicken",
-//         src: "/2.jpg",
-//         profile: "/dpp.png",
-
-//     },
-//     {
-//         name: "Bhindi",
-//         src: "/3.jpg",
-//         profile: "/dpp.png",
-
-//     },
-//     {
-//         name: "Ghobhi",
-//         src: "/4.jpg",
-//         profile: "/dpp.png",
-
-//     },
-//     {
-//         name: "Kadhi",
-//         src: "/5.jpg",
-//         profile: "/dpp.png",
-
-//     },
-//     {
-//         name: "Bhujia",
-//         src: "/6.jpg",
-//         profile: "/dpp.png",
-
-//     },
-//     {
-//         name: "Egg Curry",
-//         src: "/7.jpg",
-//         profile: "/dpp.png",
-
-//     },
-//     {
-//         name: "Mushroom",
-//         src: "/8.jpg",
-//         profile: "/dpp.png",
-
-//     },
-//     {
-//         name: "Fish",
-//         src: "/9.jpg",
-//         profile: "/dpp.png",
-
-//     },
-//     {
-//         name: "Raita",
-//         src: "/10.jpg",
-//         profile: "/dpp.png",
-
-//     },
-//     {
-//         name: "Biryani",
-//         src: "/1.jpg",
-//         profile: "/dpp.png",
-
-//     },
-// ];
-
 
 function Orders() {
     const [orders, setOrders] = useState([]);
@@ -82,15 +14,12 @@ function Orders() {
             const q = query(collection(db, "buyersandsellers"), where('BEmail', '==', email), orderBy('createdAt','desc'));
             await getDocs(q).then((response)=>{
                 let data = response.docs.map((ele)=>(
-                    {...ele.data()} 
+                    // console.log(ele.id)
+                    {...ele.data(), id:ele.id}
 
                 ))
-                console.log(data);
-                console.log(...data);
 
                 setOrders([...data]);
-                // console.log(orders[0].createdAt.toDate().toLocaleDateString('en-IN'))
-                // console.log(orders)
 
     
             })
@@ -113,6 +42,7 @@ function Orders() {
             // dislikes={order.likes}
             price ={order.Price}
             SEmail={order['SEmail'].email}
+            itemId ={order.itemId}
 
         />
 
