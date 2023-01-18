@@ -100,10 +100,10 @@ function BuyDishSelected(props) {
               <div className="px-8">
                 <div className="flex items-end">
                   <div className="text-sm font-medium focus:outline-none " name id>
-                    <h1>{state.name.name}</h1>
+                    <h1>{state.name}</h1>
                   </div>
                 </div>
-                <span className="text-xs text-gray-500 mt-2">{state.sEmail.email}</span>
+                <span className="text-xs text-gray-500 mt-2">{state.sEmail}</span>
               </div>
               <div className="px-8 mt-3">
                 <div className="flex items-end">

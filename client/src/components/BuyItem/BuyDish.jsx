@@ -47,8 +47,8 @@ function BuyDish() {
                     dateSelling={dish.createdAt.toDate().toLocaleString('en-IN')}
                     price={dish["price"]}
                     SName={dish['sName']}
-                    Likes={dish['likes']}
-                    DisLikes={dish['dislikes']}
+                    Likes={dish['likes'].length -1}
+                    DisLikes={dish['dislikes'].length-1}
                     sPhoto ={dish.sPhoto}
                     photo={dish.photo}
                     id={dish.id}

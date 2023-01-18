@@ -33,15 +33,15 @@ function Orders() {
     {orders.map((order) => (
 
         <OrderCard
-            key={order['item-name'].name}
-            name={order['item-name'].name}
-            src={order['photo'].photo}
+            key={order['item-name']}
+            name={order['item-name']}
+            src={order['photo']}
             profile={order.bPhoto}
             date={order.createdAt.toDate().toLocaleDateString('en-IN')}
             // likes={order.likes}  likes and dislikes from items collection
             // dislikes={order.likes}
             price ={order.Price}
-            SEmail={order['SEmail'].email}
+            SEmail={order['SEmail']}
             itemId ={order.itemId}
 
         />

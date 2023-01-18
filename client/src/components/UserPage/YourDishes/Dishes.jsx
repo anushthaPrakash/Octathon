@@ -112,8 +112,8 @@ function Dishes() {
             src={dish.photo}
             profile={dish.profile}
             date={dish.createdAt.toDate().toLocaleDateString('en-IN')}
-            likes={dish.likes}
-            dislikes={dish.dislikes}
+            likes={dish.likes.length-1}
+            dislikes={dish.dislikes.length-1}
             price ={dish.price}
         />
 
