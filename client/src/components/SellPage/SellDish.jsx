@@ -64,8 +64,8 @@ function SellDish() {
           sName:JSON.parse(localStorage.getItem('user')).name,
           sPhoto:JSON.parse(localStorage.getItem('user')).profilePic ,
           createdAt: serverTimestamp() ,
-          likes:[""] ,
-          dislikes:[""]
+          likes:[] ,
+          dislikes:[]
         })
         console.log(URL)  
         navigate('/success/Item-Added-Successfully')
