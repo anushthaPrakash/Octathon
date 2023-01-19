@@ -20,38 +20,29 @@ function Orders() {
                 ))
 
                 setOrders([...data]);
-
-    
             })
         }
         getData();
 
     }, [])
   return (
-    <div className='flex-row justify-center  gap-4 mb-10 border-4 '>
-
-    {orders.map((order) => (
-
-        <OrderCard
-            key={order['item-name'].name}
-            name={order['item-name'].name}
-            src={order['photo'].photo}
-            profile={order.bPhoto}
-            date={order.createdAt.toDate().toLocaleDateString('en-IN')}
-            // likes={order.likes}  likes and dislikes from items collection
-            // dislikes={order.likes}
-            price ={order.Price}
-            SEmail={order['SEmail'].email}
-            itemId ={order.itemId}
-
-        />
-
-
-
-
-    ))}
-
-</div>
+    <div className='flex-row justify-center gap-4 mb-10 border-4 '>
+        {
+                    orders.map((order)=>(
+                        <OrderCard
+                        key={order['item-name']}
+                        name={order['item-name']}
+                        src={order['photo']}
+                        profile={order.bPhoto}
+                        date={order.createdAt.toDate().toLocaleDateString('en-IN')}
+                        price ={order.Price}
+                        SEmail={order['SEmail']}
+                        itemId ={order.itemId}
+                        />
+                    ))
+        }
+    
+    </div>
   )
 }
 

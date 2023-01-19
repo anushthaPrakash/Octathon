@@ -4,8 +4,6 @@ import { useParams } from 'react-router-dom';
 import { db } from '../../firebase';
 import MealCard from './MealCard';
 
-
-
 function BuyDish() {
       const parms=useParams()
   const {dish}=parms;
@@ -20,10 +18,11 @@ function BuyDish() {
                 if( element['item-name'] == dish){
                     foodNameSet.add(element);
                 }
-                // what about a item second panner added is should not go in foodset but should go in foodnameset of panner right?
             });
             setDishes([...foodNameSet]);
             console.log(foodNameSet)
+            
+
     })
     }
     // console.log(dish)
@@ -47,15 +46,11 @@ function BuyDish() {
                     dateSelling={dish.createdAt.toDate().toLocaleString('en-IN')}
                     price={dish["price"]}
                     SName={dish['sName']}
-                    Likes={dish['likes']}
-                    DisLikes={dish['dislikes']}
+                    Likes={dish['likes'].length}
                     sPhoto ={dish.sPhoto}
                     photo={dish.photo}
                     id={dish.id}
                 />
-
-
-
 
             ))}
 

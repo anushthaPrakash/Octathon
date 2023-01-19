@@ -4,11 +4,7 @@ import { getFirestore } from "firebase/firestore";
 import {getStorage} from "firebase/storage"
 import {getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
-
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
+// My app's Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyCfRY9WR0fC5I0O7UcbsBJyTpsGgSELS-c",
     authDomain: "home-u-ebf0c.firebaseapp.com",

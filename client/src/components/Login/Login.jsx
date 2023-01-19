@@ -1,9 +1,5 @@
 import React from 'react'
-import { useEffect } from 'react';
 import {AiFillGoogleCircle} from 'react-icons/ai';
-// import { signInWithGoogle } from '../../firebase';
-import { db } from '../../firebase';
-import { collection, getDocs } from "firebase/firestore"; 
 import { useUserAuth } from '../contexts/userAuthContext';
 import { useNavigate } from 'react-router-dom';
 
